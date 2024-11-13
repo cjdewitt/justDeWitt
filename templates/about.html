@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me - Cory DeWitt</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/projects">Projects</a></li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="about-container">
+        <section class="bio-section">
+            <h1>About Me</h1>
+            <p class="bio-text">
+                Originally from Chicago, I'm currently a senior at USC pursuing a Bachelor's in Computer Science. 
+                My journey has taken me from being a QuestBridge National Match Scholar to working with cutting-edge AI 
+                technology at Google on Team Gemini. I'm passionate about artificial intelligence, software engineering, 
+                and pushing the boundaries of what's possible with technology.
+            </p>
+        </section>
+
+        <section class="timeline-section">
+            <h2>My Journey</h2>
+            <div class="timeline">
+                <div class="timeline-item" data-info="Originally from Chicago, where my passion for technology began. Growing up in this vibrant city shaped my perspective on innovation and problem-solving.">
+                    <div class="timeline-content">
+                        <h3>Chicago Origins</h3>
+                        <p>'03 - 2021</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-info="Received the prestigious QuestBridge National Match Scholarship out of 25,000 applicants, earning a full-ride scholarship to USC.">
+                    <div class="timeline-content">
+                        <h3>USC Journey Begins</h3>
+                        <p>2021</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-info="Conducted research at USC Information Science Institute STEEL Lab from December 2022 to May 2024. Focused on IoT security, reverse engineering, and AI applications. Published research at Sensors S&P '23 in Istanbul, Turkey.">
+                    <div class="timeline-content">
+                        <h3>USC Research</h3>
+                        <p>2022 - 2024</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-info="Joined Google's Gemini team as a Software Engineering Intern. Developed the Iterative Development Cycle (IDC) framework, deployed AI agents, and achieved 97.46% test accuracy in programming challenges.">
+                    <div class="timeline-content">
+                        <h3>Google Internship</h3>
+                        <p>Summer 2024</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="skills-section">
+            <h2>Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Languages</h3>
+                    <p>Python, C/C++, Swift, Java, SQL, HTML, CSS, R</p>
+                </div>
+                <div class="skill-category">
+                    <h3>Frameworks</h3>
+                    <p>TensorFlow, PyTorch, Flask, Django, LIBGDX</p>
+                </div>
+                <div class="skill-category">
+                    <h3>Tools</h3>
+                    <p>Matlab, Angr, Ghidra</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 JustDeWitt</p>
+    </footer>
+</body>
+</html>

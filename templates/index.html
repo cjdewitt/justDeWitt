@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cory DeWitt</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- Add Google Fonts for better typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/projects">Projects</a></li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <div class="welcome-container">
+            <img src="{{ url_for('static', filename='your-image.jpg') }}" alt="Profile Picture" class="profile-image">
+            <div class="welcome-text">
+                <h1>Welcome!</h1>
+                <p>I'm Cory DeWitt, an incoming software engineer at Google DeepMind.</p>
+                <p>Before you go, chat with my assistant!</p>
+            </div>
+        </div>
+    
+        <div class="chat-container">
+            <h2>Chat with Gemini</h2>
+            <div id="chatbox">
+                <div class="message bot-message">
+                    <strong>Gemini</strong>
+                    Hello, I'm Cory's assistant! Feel free to me any question, or if you want to learn more about Cory be
+                    sure to include his name in your query.
+                </div>
+                <div style="clear: both;"></div>
+            </div>
+            
+            <form id="chat-form">
+                <input 
+                    type="text" 
+                    id="message" 
+                    placeholder="Type your message..." 
+                    autocomplete="off" 
+                    required
+                >
+                <button type="submit">
+                    Send
+                </button>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 JustDeWitt</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
