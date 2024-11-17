@@ -6,7 +6,7 @@ import os
 from dotenv import load_dotenv
 
 app = Flask(__name__)
-
+load_dotenv()
 genai.configure(api_key=os.environ.get("GEMINI_API_KEY"))
 pro_model = genai.GenerativeModel('gemini-pro')
 
@@ -60,4 +60,5 @@ def chat():
         return jsonify({'reply': 'Sorry, an error occurred while processing your request.'}), 500
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port, debug=True)
