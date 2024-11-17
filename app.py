@@ -2,9 +2,10 @@ from flask import Flask, render_template, request, jsonify
 import google.generativeai as genai
 from google.api_core import retry
 import os
+from dotenv import load_dotenv
 
 app = Flask(__name__)
-
+load_dotenv()
 genai.configure(api_key=os.environ.get("GEMINI_API_KEY"))
 pro_model = genai.GenerativeModel('gemini-pro')
 
