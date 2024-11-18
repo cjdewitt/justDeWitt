@@ -26,12 +26,7 @@ class GeminiEmbeddingFunction(EmbeddingFunction):
 
 def initialize_db():
     """Initialize and populate the ChromaDB instance."""
-    chroma_client = chromadb.Client(config={
-        "storage": {
-            "type": "disk",
-            "path": "./chromadb_storage"  # Path for persistent storage
-        }
-    })
+    chroma_client = chromadb.Client()
 
     # Create or get the collection
     DB_NAME = "cory_db"
