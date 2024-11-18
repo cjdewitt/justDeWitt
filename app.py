@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, jsonify
 import google.generativeai as genai
 from google.api_core import retry
 import chromadb
+from init_db import initialize_db
 import os
 from dotenv import load_dotenv
 
@@ -10,13 +11,7 @@ load_dotenv()
 genai.configure(api_key=os.environ.get("GEMINI_API_KEY"))
 pro_model = genai.GenerativeModel('gemini-pro')
 
-DB_NAME = "cory_db"
-chroma_client = chromadb.Client()
-try:
-    db = chroma_client.get_collection(name=DB_NAME)
-except chromadb.errors.InvalidCollectionException:
-    print(f"Error: Collection {DB_NAME} does not exist. Run the database initialization script.")
-    db = None  
+db = initialize_db()
 
 @app.route('/')
 def index():
@@ -40,6 +35,9 @@ def chat():
     user_message = data.get('message')
 
     try:
+        if db is None:
+            return jsonify({'reply': 'Database not initialized. Please contact support.'}), 500
+
         if 'resume' in user_message or 'Cory' in user_message or 'DeWitt' in user_message:
             result = db.query(query_texts=[user_message], n_results=1)
             if result['documents']:
@@ -54,15 +52,17 @@ def chat():
                 """
                 model = genai.GenerativeModel("gemini-1.5-flash-latest")
                 response = model.generate_content(prompt)
+
+            else:
+                response = genai.GenerativeModel("gemini-1.5-flash-latest").generate_content(user_message)
+
+            return jsonify({'reply': response.text})
         else:
-            response = pro_model.generate_content(user_message)
-        
-        bot_reply = response.text
-        return jsonify({'reply': bot_reply})
+            return jsonify({'reply': "No relevant response found."})
+
     except Exception as e:
         print(f"Error: {e}")
-        return jsonify({'reply': 'Sorry, an error occurred while processing your request.'}), 500
+        return jsonify({'reply': 'An error occurred while processing your request.'}), 500
 
-if __name__ == '__main__':
-    port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port, debug=True)
+if __name__ == "__main__":
+    app.run(debug=True)
