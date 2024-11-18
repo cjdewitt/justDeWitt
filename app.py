@@ -53,12 +53,10 @@ def chat():
                 model = genai.GenerativeModel("gemini-1.5-flash-latest")
                 response = model.generate_content(prompt)
 
-            else:
+        else:
                 response = genai.GenerativeModel("gemini-1.5-flash-latest").generate_content(user_message)
 
-            return jsonify({'reply': response.text})
-        else:
-            return jsonify({'reply': "No relevant response found."})
+        return jsonify({'reply': response.text})
 
     except Exception as e:
         print(f"Error: {e}")
