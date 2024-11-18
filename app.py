@@ -38,7 +38,7 @@ def chat():
         if db is None:
             return jsonify({'reply': 'Database not initialized. Please contact support.'}), 500
 
-        if 'resume' in user_message or 'Cory' in user_message or 'DeWitt' in user_message:
+        if 'resume' in user_message or 'Cory' in user_message or 'cory' in user_message or 'DeWitt' in user_message:
             result = db.query(query_texts=[user_message], n_results=1)
             if result['documents']:
                 [[passage]] = result["documents"]
@@ -54,7 +54,7 @@ def chat():
                 response = model.generate_content(prompt)
 
         else:
-                response = genai.GenerativeModel("gemini-1.5-flash-latest").generate_content(user_message)
+            response = genai.GenerativeModel("gemini-1.5-flash-latest").generate_content(user_message)
 
         return jsonify({'reply': response.text})
 

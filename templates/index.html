@@ -5,8 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cory DeWitt</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <!-- Add Google Fonts for better typography -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        .scroll-button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -19,24 +35,23 @@
             </ul>
         </nav>
     </header>
-    
     <main>
         <div class="welcome-container">
-            <img src="{{ url_for('static', filename='your-image.jpg') }}" alt="Profile Picture" class="profile-image">
             <div class="welcome-text">
-                <h1>Welcome!</h1>
-                <p>I'm Cory DeWitt, an incoming software engineer at Google DeepMind.</p>
-                <p>Before you go, chat with my assistant!</p>
+                <h1 class="landing-title">
+                    <span class="line-1">welcome to</span>
+                    <span class="line-2">cory dewitt's portfolio</span>
+                    <span class="line-3">chat with his assistant</span>
+                </h1>
             </div>
         </div>
-    
-        <div class="chat-container">
-            <h2>Chat with Gemini</h2>
+            
+        <div id="chat-section" class="chat-container">
+            <h2 class="chat-title">Assistant Chat</h2>
             <div id="chatbox">
                 <div class="message bot-message">
-                    <strong>Gemini</strong>
-                    Hello, I'm Cory's assistant! Feel free to me any question, or if you want to learn more about Cory be
-                    sure to include his name in your query.
+                    <strong>assistant</strong>
+                    Hi, I'm Cory's assistant! Feel free to ask me any question, and if you want to learn more about Cory, be sure to include his name in your query.
                 </div>
                 <div style="clear: both;"></div>
             </div>
@@ -53,7 +68,7 @@
                     Send
                 </button>
             </form>
-        </div>
+        </div>    
     </main>
 
     <footer>
